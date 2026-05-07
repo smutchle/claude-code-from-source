@@ -1,0 +1,28 @@
+# Preface {.unnumbered}
+
+This book is the result of studying the architecture of Anthropic's Claude Code and distilling the patterns, trade-offs, and design decisions into a technical narrative that any engineer can learn from.
+
+When Anthropic shipped Claude Code on npm, the `.js.map` source maps contained a `sourcesContent` field with the full original TypeScript. 36 AI agents analyzed nearly two thousand TypeScript files across four phases — exploration, analysis, writing, and review — producing this 18-chapter book in approximately six hours.
+
+**What You Will Find Here**
+
+Each chapter has layered depth: a narrative flow for technical leaders, deep-dive sections for implementers, and an *Apply This* closing that extracts transferable patterns you can use in your own systems.
+
+**The 10 Patterns That Make It Work**
+
+If you read nothing else:
+
+1. **AsyncGenerator as agent loop** — yields Messages, typed Terminal return, natural backpressure and cancellation
+2. **Speculative tool execution** — start read-only tools during model streaming, before the response completes
+3. **Concurrent-safe batching** — partition tools by safety, run reads in parallel, serialize writes
+4. **Fork agents for cache sharing** — parallel children share byte-identical prompt prefixes, saving ~95% input tokens
+5. **4-layer context compression** — snip, microcompact, collapse, autocompact — each lighter than the next
+6. **File-based memory with LLM recall** — Sonnet side-query selects relevant memories, not keyword matching
+7. **Two-phase skill loading** — frontmatter only at startup, full content on invocation
+8. **Sticky latches for cache stability** — once a beta header is sent, never unset mid-session
+9. **Slot reservation** — 8K default output cap, escalate to 64K on hit (saves context in 99% of requests)
+10. **Hook config snapshot** — freeze at startup to prevent runtime injection attacks
+
+::: {.callout-note}
+This book does not contain any source code from Claude Code. All code blocks are original pseudocode using different variable names, written to illustrate architectural patterns. No proprietary prompt text, internal constants, or exact function implementations are included. This project exists purely for educational purposes.
+:::

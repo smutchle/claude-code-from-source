@@ -1,0 +1,9 @@
+% Force all included graphics to fit within page boundaries.
+% Quarto computes \includegraphics[width=Xin,height=Yin] from raw PNG pixel
+% dimensions, producing values like width=27in that blow past the page.
+% Explicit width= overrides max width= in graphicx, so we must drop the
+% Quarto-generated [#1] entirely and substitute our own constraints.
+\usepackage[export]{adjustbox}
+\let\originalincludegraphics\includegraphics
+\renewcommand{\includegraphics}[2][]{%
+  \originalincludegraphics[max width=\linewidth,max height=0.85\textheight,keepaspectratio]{#2}}

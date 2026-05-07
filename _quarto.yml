@@ -1,0 +1,57 @@
+project:
+  type: book
+
+book:
+  title: "Claude Code from Source"
+  subtitle: "Architecture, Patterns & Internals of Anthropic's AI Coding Agent"
+  author: "Alejandro Balderas"
+  date: "2025"
+  chapters:
+    - index.qmd
+    - part: "Part I: Foundations"
+      chapters:
+        - book/ch01-architecture.qmd
+        - book/ch02-bootstrap.qmd
+        - book/ch03-state.qmd
+        - book/ch04-api-layer.qmd
+    - part: "Part II: The Core Loop"
+      chapters:
+        - book/ch05-agent-loop.qmd
+        - book/ch06-tools.qmd
+        - book/ch07-concurrency.qmd
+    - part: "Part III: Multi-Agent Orchestration"
+      chapters:
+        - book/ch08-sub-agents.qmd
+        - book/ch09-fork-agents.qmd
+        - book/ch10-coordination.qmd
+    - part: "Part IV: Persistence and Intelligence"
+      chapters:
+        - book/ch11-memory.qmd
+        - book/ch12-extensibility.qmd
+    - part: "Part V: The Interface"
+      chapters:
+        - book/ch13-terminal-ui.qmd
+        - book/ch14-input-interaction.qmd
+    - part: "Part VI: Connectivity"
+      chapters:
+        - book/ch15-mcp.qmd
+        - book/ch16-remote.qmd
+    - part: "Part VII: Performance Engineering"
+      chapters:
+        - book/ch17-performance.qmd
+        - book/ch18-epilogue.qmd
+
+format:
+  pdf:
+    pdf-engine: pdflatex
+    documentclass: book
+    papersize: letter
+    fontsize: 11pt
+    colorlinks: true
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    lang: en
+    fig-width: 6.5
+    fig-height: 7
+    include-in-header: latex/fit-figures.tex
